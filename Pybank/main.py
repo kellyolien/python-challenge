@@ -52,11 +52,11 @@ avg_profit_loss = round(net_profit_loss/(count_months-1), 2)
 #Greatest Increase and Greatest Decrease
 greatest_increase = max(profit_loss_changes)
 max_increase_month = profit_loss_changes.index(greatest_increase)
-best_month = months[greatest_increase]
+best_month = months[max_increase_month]
 
 greatest_decrease = min(profit_loss_changes)
 min_increase_month = profit_loss_changes.index(greatest_decrease)
-worst_month = months[greatest_decrease]
+worst_month = months[min_increase_month]
 
 #Export a text file with results
 
