@@ -3,7 +3,7 @@ import csv
 
 #Read the CSV file
 
-budgetcsv = os.path.join('.', 'Resources', 'budget_data.csv')
+budgetcsv = os.path.join('Resources', 'budget_data.csv')
 
 #Assign variables
 
@@ -51,19 +51,35 @@ avg_profit_loss = round(net_profit_loss/(count_months-1), 2)
 
 #Greatest Increase and Greatest Decrease
 greatest_increase = max(profit_loss_changes)
-greatest_decrease = min(profit_loss_changes)
-
-max_increase_month = profit_loss_changes.index(max(greatest_increase))
-min_increase_month = profit_loss_changes.index(min(greatest_decrease))
-
+max_increase_month = profit_loss_changes.index(greatest_increase)
 best_month = months[greatest_increase]
+
+greatest_decrease = min(profit_loss_changes)
+min_increase_month = profit_loss_changes.index(greatest_decrease)
 worst_month = months[greatest_decrease]
 
 #Export a text file with results
 
 output_file = os.path.join('Analysis','Financial_Analysis.txt')
 
+#Print analysis
+print("Financial Analysis")
+print('\n')
+print('-------------------')
+print('\n')
+print(f"Total Months: {count_months}")
+print('\n')
+print(f"Total:  ${net_profit_loss}")
+print('\n')
+print(f"Average Change: ${avg_profit_loss}") 
+print('\n')
+print(f"Greatest Increase in Profits:  {best_month},'$',{greatest_increase}")
+print('\n')
+print(f"Greatest Decrease in Profits: {worst_month},'$', {greatest_decrease}")
+
+
 with open(output_file, 'w') as file:
+
     file.write("Financial Analysis")
     file.write('\n')
     file.write('-------------------')
@@ -74,8 +90,8 @@ with open(output_file, 'w') as file:
     file.write('\n')
     file.write(f"Average Change: ${avg_profit_loss}") 
     file.write('\n')
-    file.write(f"Greatest Increase in Profits:  {best_month},'$',{highest_change}")
+    file.write(f"Greatest Increase in Profits:  {best_month},'$',{greatest_increase}")
     file.write('\n')
-    file.write(f"Greatest Decrease in Profits: {worst_month},'$', {lowest_change}")
+    file.write(f"Greatest Decrease in Profits: {worst_month},'$', {greatest_decrease}")
 
 
