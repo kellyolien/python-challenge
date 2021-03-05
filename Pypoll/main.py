@@ -40,14 +40,14 @@ with open(pypollcsv, 'r') as csvfile:
 
 
 #Calculate percentage
-percentages = []
+percent = []
 max_votes = vote_count[0]
 max_index = 0
 
 #find the percentage fo votes for each candiddate
 for count in range(len(candidates)):
     vote_percent = vote_count[count]/total_votes*100
-    percentages.append(vote_percent)
+    percent.append(vote_percent)
 
     if vote_count[count] > max_votes:
         max_votes = vote_count[count]
@@ -64,7 +64,7 @@ print(f"Total Votes: {total_votes}")
 print('\n')
 print('-------------------')
 for count in range(len(candidates)):
-    print(f"{candidates[count]}: {percentages[count]}% ({vote_count[count]})")
+    print(f"{candidates[count]}: {percent[count]}% ({vote_count[count]})")
 print('\n')
 print('-------------------')
 print(f"Winner: {winner}")
@@ -84,7 +84,7 @@ with open(output_file, 'w') as file:
     file.write(f"Total Votes: {total_votes}")
     file.write('\n')
     for count in range(len(candidates)):
-        file.write(f"{candidates[count]}: {percentages[count]}% ({vote_count[count]})")
+        file.write(f"{candidates[count]}: {percent[count]}% ({vote_count[count]})")
     file.write('\n')
     file.write(f"Winner: {winner}") 
  
